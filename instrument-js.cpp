@@ -1577,9 +1577,9 @@ void jscoverage_instrument_js(const char * id, const uint16_t * characters, size
   exclusive_directives = NULL;
 
   /* copy the original source to the output */
-  Stream_printf(output, "_$jscoverage['%s'].source = ", file_id);
-  jscoverage_write_source(id, characters, num_characters, output);
-  Stream_printf(output, ";\n");
+  // Stream_printf(output, "_$jscoverage['%s'].source = ", file_id);
+  // jscoverage_write_source(id, characters, num_characters, output);
+  // Stream_printf(output, ";\n");
 
   /* conditionals */
   if (has_conditionals) {

@@ -108,6 +108,9 @@ int main(int argc, char ** argv) {
       }
       jscoverage_set_js_version(argv[i]);
     }
+    else if (strcmp(argv[i], "--single-compact") == 0) {
+      jscoverage_mode = JSCOVERAGE_SINGLE_FILE_COMPACT;
+    }
     else if (strncmp(argv[i], "--js-version=", 13) == 0) {
       jscoverage_set_js_version(argv[i] + 13);
     }
@@ -132,9 +135,17 @@ int main(int argc, char ** argv) {
   source = make_canonical_path(source);
   destination = make_canonical_path(destination);
 
-  jscoverage_init();
-  jscoverage_instrument(source, destination, verbose, exclude, num_exclude, no_instrument, num_no_instrument);
-  jscoverage_cleanup();
+  if (jscoverage_mode == JSCOVERAGE_SINGLE_FILE_COMPACT) {
+    jscoverage_mode = JSCOVERAGE_NORMAL;
+    jscoverage_init();
+    jscoverage_instrument_single_compact(source, destination);
+    jscoverage_cleanup();
+  } else {
+    jscoverage_init();
+    jscoverage_instrument(source, destination, verbose, exclude, num_exclude, no_instrument, num_no_instrument);
+    jscoverage_cleanup();
+  } 
+  
 
   free(source);
   free(destination);

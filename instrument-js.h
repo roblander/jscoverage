@@ -43,7 +43,8 @@ enum FileType {
 enum JSCoverageMode {
   JSCOVERAGE_NORMAL,
   JSCOVERAGE_MOZILLA,
-  JSCOVERAGE_NO_BROWSER
+  JSCOVERAGE_NO_BROWSER,
+  JSCOVERAGE_SINGLE_FILE_COMPACT
 };
 extern enum JSCoverageMode jscoverage_mode;
 

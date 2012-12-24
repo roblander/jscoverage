@@ -137,6 +137,12 @@ static void instrument_file(const char * source_file, const char * destination_f
   }
 }
 
+void jscoverage_instrument_single_compact(const char * source,
+                           const char * destination) {
+  
+   instrument_file(source, destination, source, 1);
+}
+
 void jscoverage_instrument(const char * source,
                            const char * destination,
                            int verbose,
