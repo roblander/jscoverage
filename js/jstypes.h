@@ -248,8 +248,8 @@
 ***********************************************************************/
 #ifdef __cplusplus
 
-# define JS_BEGIN_EXTERN_C      extern "C" {
-# define JS_END_EXTERN_C        }
+# define JS_BEGIN_EXTERN_C
+# define JS_END_EXTERN_C
 
 #else
 

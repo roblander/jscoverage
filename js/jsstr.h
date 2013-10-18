@@ -110,6 +110,7 @@ js_GetDependentStringChars(JSString *str);
  * NB: Always use the length() and chars() accessor methods.
  */
 #ifdef __cplusplus /* Allow inclusion from LiveConnect C files. */
+
 struct JSString {
     friend class TraceRecorder;
 
@@ -482,7 +483,7 @@ JS_STATIC_ASSERT(sizeof(size_t) == sizeof(jsword));
 #define JSFLATSTR_CHARS(str)                                                  \
     (JS_ASSERT(JSSTRING_IS_FLAT(str)), (str)->u.chars)
 
-/* 
+/*
  * Special flat string initializer that preserves the JSSTR_DEFLATED flag.
  * Use this macro when reinitializing an existing string (which may be
  * hashed to its deflated bytes. Newborn strings must use JSFLATSTR_INIT.

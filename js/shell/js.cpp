@@ -167,7 +167,7 @@ static PRCondVar *gSleepWakeup = NULL;
 
 static JSRuntime *gRuntime = NULL;
 
-/* 
+/*
  * Since signal handlers can't block, we must disable them before manipulating
  * the context list.
  */
@@ -240,7 +240,7 @@ GetLine(FILE *file, const char * prompt)
 {
     size_t size;
     char *buffer;
-#ifdef EDITLINE
+#ifdef EDITLINE1
     /*
      * Use readline only if file is stdin, because there's no way to specify
      * another handle.  Are other filehandles interactive?
@@ -1947,7 +1947,7 @@ Tracing(JSContext *cx, JSObject *obj, uintN argc, jsval *argv, jsval *rval)
         char *name = JS_GetStringBytes(JSVAL_TO_STRING(argv[0]));
         file = fopen(name, "w");
         if (!file) {
-            JS_ReportError(cx, "tracing: couldn't open output file %s: %s", 
+            JS_ReportError(cx, "tracing: couldn't open output file %s: %s",
                            name, strerror(errno));
             return JS_FALSE;
         }
@@ -4680,7 +4680,7 @@ static JSBool
 ContextCallback(JSContext *cx, uintN contextOp)
 {
     JSShellContextData *data;
-    
+
     switch (contextOp) {
       case JSCONTEXT_NEW: {
         data = NewContextData();
@@ -4864,7 +4864,7 @@ main(int argc, char **argv, char **envp)
 
     JS_CommenceRuntimeShutDown(rt);
 
-    WITH_LOCKED_CONTEXT_LIST( 
+    WITH_LOCKED_CONTEXT_LIST(
         JS_DestroyContext(cx)
     );
 
